@@ -10,8 +10,8 @@ import logging
 from zipfile import ZipFile
 
 
-logging.basicConfig(filename= 'C:\\Users\\jitez\\Music\\steeleye_assignment\\test.log',level=logging.WARNING)
-mytree= ET.parse("C:\\Users\\jitez\\Music\\steeleye_assignment\\select.xml")
+logging.basicConfig(filename= 'test.log',level=logging.WARNING)
+mytree= ET.parse("select.xml")
 root= mytree.getroot()
 URL = root[1][0][1].text
 response= requests.get(URL)
@@ -29,7 +29,7 @@ names= ['FinInstrmGnlAttrbts.Id', 'FinInstrmGnlAttrbts.FullNm', 'FinInstrmGnlAtt
         'FinInstrmGnlAttrbts.CmmdtyDerivInd', 'FinInstrmGnlAttrbts.NtnlCcy', 'Issr']
 
 # CREATE CSV FILE
-csvfile = open("C:\\Users\\jitez\\Music\\steeleye_assignment\\data.csv",'w',encoding='utf-8')
+csvfile = open("data.csv",'w',encoding='utf-8')
 csvfile_writer = csv.writer(csvfile)
 # ADD HEADER
 csvfile_writer.writerow(names)
@@ -49,5 +49,5 @@ for i in range(0, len(xml1)):
 
 #Code to upload file in AWS S3 bucket
 s3_client=  boto3.client('s3')
-response= s3_client.upload_file('/data.csv', 'my_bucket11', 'data.csv')
+response= s3_client.upload_file('data.csv', 'my_bucket11', 'data.csv')
 
