@@ -48,6 +48,6 @@ for i in range(0, len(xml1)):
   csvfile_writer.writerow(csv_line)
 
 #Code to upload file in AWS S3 bucket
-#3_client=  boto3.client('s3')
-#response= s3_client.upload_file('/data.csv', 'my_bucket11', 'data.csv')
+s3_client=  boto3.client('s3')
+response= s3_client.upload_file('/data.csv', 'my_bucket11', 'data.csv')
 
