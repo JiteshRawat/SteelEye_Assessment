@@ -11,6 +11,7 @@ from zipfile import ZipFile
 
 
 logging.basicConfig(filename= 'test.log',level=logging.WARNING)
+#Parsing select.xml file (do change the required path for files)
 mytree= ET.parse("select.xml")
 root= mytree.getroot()
 URL = root[1][0][1].text
